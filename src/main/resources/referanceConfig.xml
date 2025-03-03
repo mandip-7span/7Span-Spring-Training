@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+  https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="com.SpringLearning.Demo.referenceInjection.Address" name="Address_A">
+        <property name="city" value="Unjha"/>
+        <property name="state" value="Gujarat"/>
+        <property name="country" value="India"/>
+    </bean>
+
+    <bean class="com.SpringLearning.Demo.referenceInjection.Student" name="Student_A">
+        <property name="name" value="mandeep"/>
+        <property name="id" value="3"/>
+        <property name="address">
+            <ref bean="Address_A"/>
+        </property>
+    </bean>
+
+</beans>
