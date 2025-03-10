@@ -39,6 +39,7 @@ public class CourseServiceimpl implements CourseService{
         return course;
     }
 
+
     @Override
     public boolean deleteCourse(long courseId) {
         return list.removeIf(course -> course.getId() == courseId);
