@@ -11,7 +11,6 @@ public class Employee {
     private Map<String,String> course;
 
     public Employee(String name, Set<String> address, List<String> phones, Map<String, String> course) {
-        super();
         this.name = name;
         this.address = address;
         this.phones = phones;
@@ -19,7 +18,6 @@ public class Employee {
     }
 
     public Employee() {
-        super();
     }
 
     public String getName() {
