@@ -13,7 +13,6 @@ public class Human {
     private Heart heart;
 
     public Human() {
-
     }
 
     //@Autowired - it is used for injecting heart object without use autowire property explicitely

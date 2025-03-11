@@ -24,6 +24,7 @@ public class Heart {
         this.noOfHeart = noOfHeart;
     }
 
+
     public void pump() {
         System.out.println("Your heart is Pumping");
         System.out.println("Alive");

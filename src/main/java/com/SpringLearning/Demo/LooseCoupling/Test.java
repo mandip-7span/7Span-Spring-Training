@@ -7,8 +7,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Test {
 
     public static void main(String[] args) {
+
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         Student student1 = context.getBean(Student.class);
+
         student1.cheating();
     }
 }
