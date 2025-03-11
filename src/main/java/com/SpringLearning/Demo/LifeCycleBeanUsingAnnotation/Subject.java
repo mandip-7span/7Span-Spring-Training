@@ -2,7 +2,9 @@ package com.SpringLearning.Demo.LifeCycleBeanUsingAnnotation;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Subject {
     private String name;
 
