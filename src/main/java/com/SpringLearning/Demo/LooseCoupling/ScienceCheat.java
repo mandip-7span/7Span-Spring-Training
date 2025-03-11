@@ -1,5 +1,8 @@
 package com.SpringLearning.Demo.LooseCoupling;
 
+import org.springframework.stereotype.Component;
+
+@Component("sciencecheat")
 public class ScienceCheat implements Cheat{
 
     @Override

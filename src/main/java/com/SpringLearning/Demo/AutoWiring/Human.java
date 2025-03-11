@@ -2,11 +2,13 @@ package com.SpringLearning.Demo.AutoWiring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Human {
 
-//    @Autowired
-//    @Qualifier("humanheart") - you can also use annotation here it is work properly and
+    @Autowired
+    @Qualifier("humanheart") //-you can also use annotation here it is work properly and
 //    if use autoeire before dependancy like this than not need to setter because it is not run setter method
     private Heart heart;
 
@@ -19,9 +21,9 @@ public class Human {
         this.heart = heart;
     }
 
-    @Autowired// - you can also use autowired here
+    //@Autowired - you can also use autowired here
     // here first check byType if fail than check byName if it is also fail than it will show error
-    @Qualifier("humanheart")//- when both case are fail than it is used find the object by name
+    //@Qualifier("humanheart")- when both case are fail than it is used find the object by name
     // which is passing in it
     public void setHeart(Heart heart) {
         this.heart = heart;

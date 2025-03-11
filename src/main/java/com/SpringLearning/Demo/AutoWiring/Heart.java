@@ -1,5 +1,8 @@
 package com.SpringLearning.Demo.AutoWiring;
 
+import org.springframework.stereotype.Component;
+
+@Component("humanheart")
 public class Heart {
 
     private String nameOfAnimal;

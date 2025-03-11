@@ -1,13 +1,14 @@
 package com.SpringLearning.Demo.LooseCoupling;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Test {
 
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("LooseCoupling.xml");
-        Student student1 = context.getBean("student1", Student.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        Student student1 = context.getBean(Student.class);
         student1.cheating();
     }
 }
