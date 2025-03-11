@@ -1,8 +1,13 @@
 package com.SpringLearning.Demo.referenceInjection;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Student {
     private String name;
     private int id;
+    @Autowired
     Address address;
 
     public Student(String name, int id, Address address) {
