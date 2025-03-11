@@ -1,7 +1,9 @@
 package com.SpringLearning.Demo.LifeCycleBeanInterface;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Student implements InitializingBean, DisposableBean {
     private String name;
     private int id;
@@ -11,7 +13,6 @@ public class Student implements InitializingBean, DisposableBean {
     }
 
     public void setName(String name) {
-        System.out.println("set name of student");
         this.name = name;
     }
 
