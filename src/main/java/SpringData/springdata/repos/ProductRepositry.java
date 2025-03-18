@@ -1,6 +1,5 @@
 package SpringData.springdata.repos;
 
-
 import SpringData.springdata.entities.Product;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;

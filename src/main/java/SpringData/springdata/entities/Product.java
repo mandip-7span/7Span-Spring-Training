@@ -9,6 +9,7 @@ import jakarta.persistence.Table;
 @Table
 public class Product {
 
+
     @Id
     private int id;
     private String name;
