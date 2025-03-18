@@ -112,7 +112,6 @@ class SpringdataApplicationTests {
 
 	@Test
 	public void testFindAllSorting() {
-		repositry.findAll(new Sort(null,"name")).forEach(p-> System.out.println(p.getName()));
+		repositry.findAll(Sort.by(Sort.Direction.ASC, "name","price")).forEach(p-> System.out.println(p.getName()));
 	}
-
 }
