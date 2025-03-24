@@ -2,6 +2,8 @@ package SpringData.springdata;
 
 import SpringData.springdata.entities.Product;
 import SpringData.springdata.repos.ProductRepositry;
+import jakarta.persistence.EntityManager;
+import org.hibernate.Session;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +13,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -24,6 +28,9 @@ class SpringdataApplicationTests {
 
 	@Autowired
 	ProductRepositry repositry;
+
+	@Autowired
+	EntityManager entityManager;
 
 	@Test
 	void contextLoads() {
@@ -99,7 +106,8 @@ class SpringdataApplicationTests {
 
 	@Test
 	public void testFindByIdIn() {
-		List<Product> products = repositry.findByIdIn(Arrays.asList(2,4));
+		Pageable pageable = PageRequest.of(0,2, Sort.Direction.DESC,"name");
+		List<Product> products = repositry.findByIdIn(Arrays.asList(1,2,3,4),pageable);
 		products.forEach(p-> System.out.println(p.getName()));
 	}
 
@@ -112,6 +120,31 @@ class SpringdataApplicationTests {
 
 	@Test
 	public void testFindAllSorting() {
-		repositry.findAll(Sort.by(Sort.Direction.ASC, "name","price")).forEach(p-> System.out.println(p.getName()));
+		repositry.findAll(Sort.by(
+				Sort.Order.desc("name"),
+				Sort.Order.asc("price")
+		)).forEach(p-> System.out.println(p.getName()));
+
+		//repositry.findAll(Sort.by(Sort.Direction.ASC, "name","price")).forEach(p-> System.out.println(p.getName()));
+	}
+
+	@Test
+	public void testFindAllPagingAndSorting() {
+		Pageable pageable = PageRequest.of(1,2, Sort.Direction.DESC,"name");
+		repositry.findAll(pageable).forEach(p-> System.out.println(p.getName()));
+	}
+
+	@Test
+	@Transactional
+	public void testCaching() {
+		Session session = entityManager.unwrap(Session.class);
+		Optional<Product> optionalproduct = repositry.findById(1);
+		Product product = optionalproduct.get();
+
+		repositry.findById(1);
+
+		//session.evict(product);
+
+		repositry.findById(1);
 	}
 }

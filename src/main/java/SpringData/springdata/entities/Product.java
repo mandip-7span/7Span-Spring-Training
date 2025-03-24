@@ -4,10 +4,15 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import java.io.Serializable;
 
 @Entity
 @Table
-public class Product {
+//@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+public class Product /*implements Serializable*/ {
 
 
     @Id
